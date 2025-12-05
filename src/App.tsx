@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
@@ -22,22 +22,14 @@ function App() {
     <div className="min-h-screen">
       <Navigation onNavigate={handleNavigate} />
       <div className="">
-        <Suspense
-          fallback={
-            <div className="flex justify-center items-center py-20">
-              <p className="text-gray-600">Betöltés...</p>
-            </div>
-          }
-        >
-          <Routes>
-            <Route path="/" element={<Home onNavigate={handleNavigate} />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/prices" element={<Prices />} />
-            <Route path="/portfolio" element={<Portfolio />} />
-            <Route path="/booking" element={<Booking />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+        <Routes>
+          <Route path="/" element={<Home onNavigate={handleNavigate} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/prices" element={<Prices />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </div>
       <Footer />
     </div>
