@@ -21,7 +21,7 @@ export function Navigation({ onNavigate }: NavigationProps) {
     { id: "prices", label: "Árak", icon: <Tag className="w-4 h-4" /> },
     {
       id: "portfolio",
-      label: "Portfólió",
+      label: "Munkáim",
       icon: <Image className="w-4 h-4" />,
     },
     {

@@ -3,6 +3,8 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
 
+import { Analytics } from "@vercel/analytics/react";
+
 const Home = React.lazy(() => import("./pages/Home"));
 const About = React.lazy(() => import("./pages/About"));
 const Prices = React.lazy(() => import("./pages/Prices"));
@@ -20,6 +22,7 @@ function App() {
 
   return (
     <div className="min-h-screen">
+      <Analytics />
       <Navigation onNavigate={handleNavigate} />
       <div className="">
         <Routes>

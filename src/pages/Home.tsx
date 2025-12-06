@@ -1,6 +1,6 @@
 import { Sparkles, Award, Heart, Clock, Phone } from "lucide-react";
 import Contact from "../components/Contact";
-import { servicesSummary } from "../assets/data/servicesSummary";
+import { servicesSummary } from "../data/servicesSummary";
 
 import img1 from "../assets/facebook/1.jpg";
 import img2 from "../assets/facebook/2.jpg";
