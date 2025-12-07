@@ -48,6 +48,7 @@ export function Navigation({ onNavigate }: NavigationProps) {
           <button
             onClick={() => handleClick("home")}
             className="flex items-center gap-2 sm:gap-3"
+            aria-label="Főoldal"
           >
             <img
               src={icon}

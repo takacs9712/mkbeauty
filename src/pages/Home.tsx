@@ -32,13 +32,13 @@ function Home({ onNavigate }: HomeProps) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
-              onClick={() => onNavigate("booking")}
+              onClick={() => onNavigate("idopontfoglalas")}
               className="px-8 py-4 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition-all shadow-lg hover:shadow-xl font-semibold"
             >
               Foglaljon időpontot
             </button>
             <button
-              onClick={() => onNavigate("prices")}
+              onClick={() => onNavigate("arak")}
               className="px-8 py-4 bg-white text-rose-600 border-2 border-rose-600 rounded-lg hover:bg-rose-50 transition-all font-semibold"
             >
               Árak és szolgáltatások

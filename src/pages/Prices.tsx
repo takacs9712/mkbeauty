@@ -100,147 +100,165 @@ const priceData = {
 
 function Prices() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-50 py-32">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Fejléc */}
-        <div className="text-center mb-16">
-          <h1 className="page-title">Szolgáltatások és árak</h1>
-          <p className="text-gray-700 max-w-3xl mx-auto">
-            Az árak 2025. november 15-től visszavonásig érvényesek, bőrtípus- és
-            kezelésfüggők. Minden vendég számára személyre szabott kezelési terv
-            készül.
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 py-24 sm:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Fejléc - optimalizált */}
+        <div className="text-center mb-12 sm:mb-16">
+          <h1 className="page-title">Szolgáltatások & Árak</h1>
+
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+            **Az árak 2025. november 15-től visszavonásig érvényesek, bőrtípus-
+            és kezelésfüggők. Minden vendég számára személyre szabott kezelési
+            terv készül.**
           </p>
         </div>
 
-        {/* Kozmetikai kezelések kategória */}
-        <div className="mb-16">
-          <div className="mb-8">
-            <h2 className="text-3xl font-serif font-bold text-rose-900 mb-2">
+        {/* Kozmetikai kezelések */}
+        <section className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-2 h-8 bg-gradient-to-b from-rose-500 to-pink-500 rounded-full"></div>
+            <h2 className="text-xl sm:text-3xl font-bold  text-rose-900">
               Kozmetikai kezelések
             </h2>
-            <div className="w-20 h-1 bg-rose-600 rounded"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {priceData.kozmetika.map((section) => (
               <div
                 key={section.title}
-                className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-rose-100"
+                className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-rose-100 hover:border-rose-200"
               >
-                <h3 className="text-xl font-semibold text-rose-900 mb-4 pb-2 border-b-2 border-rose-200">
+                <h3 className="text-lg font-semibold text-rose-900 mb-4 pb-3 border-b-2 border-rose-100 group-hover:border-rose-300 transition-colors">
                   {section.title}
                 </h3>
                 <div className="space-y-3">
-                  {section.items.map((item) => (
+                  {section.items.map((item, idx) => (
                     <div
-                      key={item.name}
-                      className="flex justify-between gap-4 text-sm"
+                      key={idx}
+                      className="flex justify-between gap-3 items-start"
                     >
-                      <span className="text-gray-700">{item.name}</span>
-                      <span className="text-rose-700 font-semibold whitespace-nowrap">
+                      <span className="text-gray-700 text-sm leading-relaxed flex-1">
+                        {item.name}
+                      </span>
+                      <span className="text-rose-600 font-bold text-sm whitespace-nowrap">
                         {item.price}
                       </span>
                     </div>
                   ))}
                 </div>
                 {section.note && (
-                  <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-200">
+                  <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-100 italic">
                     {section.note}
                   </p>
                 )}
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Szempilla és szemöldök kategória */}
-        <div className="mb-16">
-          <div className="mb-8">
-            <h2 className="text-3xl font-serif font-bold text-rose-900 mb-2">
-              Szempilla és szemöldök
+        {/* Szempilla és szemöldök */}
+        <section className="mb-20">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-2 h-8 bg-gradient-to-b from-pink-500 to-purple-500 rounded-full"></div>
+            <h2 className="text-xl sm:text-3xl font-bold  text-rose-900">
+              Szempilla & Szemöldök
             </h2>
-            <div className="w-20 h-1 bg-rose-600 rounded"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl">
             {priceData.szempilla.map((section) => (
               <div
                 key={section.title}
-                className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-rose-100"
+                className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-pink-100 hover:border-pink-200"
               >
-                <h3 className="text-xl font-semibold text-rose-900 mb-4 pb-2 border-b-2 border-rose-200">
+                <h3 className="text-lg font-semibold text-rose-900 mb-4 pb-3 border-b-2 border-pink-100 group-hover:border-pink-300 transition-colors">
                   {section.title}
                 </h3>
                 <div className="space-y-3">
-                  {section.items.map((item) => (
+                  {section.items.map((item, idx) => (
                     <div
-                      key={item.name}
-                      className="flex justify-between gap-4 text-sm"
+                      key={idx}
+                      className="flex justify-between gap-3 items-start"
                     >
-                      <span className="text-gray-700">{item.name}</span>
-                      <span className="text-rose-700 font-semibold whitespace-nowrap">
+                      <span className="text-gray-700 text-sm leading-relaxed flex-1">
+                        {item.name}
+                      </span>
+                      <span className="text-pink-600 font-bold text-sm whitespace-nowrap">
                         {item.price}
                       </span>
                     </div>
                   ))}
                 </div>
                 {section.note && (
-                  <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-200">
+                  <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-100 italic">
                     {section.note}
                   </p>
                 )}
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Sminktetoválás kategória */}
-        <div className="mb-12">
-          <div className="mb-8">
-            <h2 className="text-3xl font-serif font-bold text-rose-900 mb-2">
+        {/* Sminktetoválás */}
+        <section className="mb-12">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="w-2 h-8 bg-gradient-to-b from-purple-500 to-rose-500 rounded-full"></div>
+            <h2 className="text-xl sm:text-3xl font-bold  text-rose-900">
               Sminktetoválás
             </h2>
-            <div className="w-20 h-1 bg-rose-600 rounded"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl">
             {priceData.sminkteteovalas.map((section) => (
               <div
                 key={section.title}
-                className="bg-white/60 backdrop-blur-sm rounded-xl p-6 border border-rose-100"
+                className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-purple-100 hover:border-purple-200"
               >
-                <h3 className="text-xl font-semibold text-rose-900 mb-4 pb-2 border-b-2 border-rose-200">
+                <h3 className="text-lg font-semibold text-rose-900 mb-4 pb-3 border-b-2 border-purple-100 group-hover:border-purple-300 transition-colors">
                   {section.title}
                 </h3>
                 <div className="space-y-3">
-                  {section.items.map((item) => (
+                  {section.items.map((item, idx) => (
                     <div
-                      key={item.name}
-                      className="flex justify-between gap-4 text-sm"
+                      key={idx}
+                      className="flex justify-between gap-3 items-start"
                     >
-                      <span className="text-gray-700">{item.name}</span>
-                      <span className="text-rose-700 font-semibold whitespace-nowrap">
+                      <span className="text-gray-700 text-sm leading-relaxed flex-1">
+                        {item.name}
+                      </span>
+                      <span className="text-purple-600 font-bold text-sm whitespace-nowrap">
                         {item.price}
                       </span>
                     </div>
                   ))}
                 </div>
                 {section.note && (
-                  <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-200">
+                  <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-100 italic">
                     {section.note}
                   </p>
                 )}
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Lábjegyzet */}
-        <div className="text-center">
-          <p className="text-sm text-gray-600 bg-white/40 backdrop-blur-sm rounded-lg py-3 px-6 inline-block">
-            Az árak tájékoztató jellegűek, pontos árat személyes konzultáció
-            során adok.
-          </p>
+        {/* CTA banner */}
+        <div className="mt-16 text-center">
+          <div className="inline-block bg-gradient-to-r from-rose-500 to-pink-500 rounded-2xl p-[2px]">
+            <div className="bg-white rounded-2xl px-8 py-6">
+              <p className="text-gray-700 text-sm sm:text-base mb-3">
+                Az árak tájékoztató jellegűek, pontos árat személyes konzultáció
+                során adok.
+              </p>
+              <a
+                href="tel:+36301234567"
+                className="inline-flex items-center gap-2 text-rose-600 font-semibold hover:text-rose-700 transition-colors"
+              >
+                <span>Időpontfoglalás</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

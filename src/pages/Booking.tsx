@@ -7,7 +7,7 @@ function Booking() {
         {/* Fejléc */}
         <div className="text-center mb-12">
           <h1 className="page-title">Időpontfoglalás</h1>
-          <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
             Időpontot kizárólag telefonon lehet foglalni, hogy minden kezelés
             előtt személyre szabottan egyeztethessük az igényeit és a
             lehetőségeket.
