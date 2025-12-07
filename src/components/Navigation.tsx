@@ -17,15 +17,15 @@ export function Navigation({ onNavigate }: NavigationProps) {
 
   const menuItems: MenuItem[] = [
     { id: "home", label: "Főoldal", icon: <Home className="w-4 h-4" /> },
-    { id: "about", label: "Rólam", icon: <User className="w-4 h-4" /> },
-    { id: "prices", label: "Árak", icon: <Tag className="w-4 h-4" /> },
+    { id: "rolam", label: "Rólam", icon: <User className="w-4 h-4" /> },
+    { id: "arak", label: "Árak", icon: <Tag className="w-4 h-4" /> },
     {
-      id: "portfolio",
+      id: "munkaim",
       label: "Munkáim",
       icon: <Image className="w-4 h-4" />,
     },
     {
-      id: "booking",
+      id: "idopontfoglalas",
       label: "Időpontfoglalás",
       icon: <Calendar className="w-4 h-4" />,
     },

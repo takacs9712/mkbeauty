@@ -124,10 +124,10 @@ const Contact = () => {
                       Email
                     </p>
                     <a
-                      href="mailto:info@molnarkrisztina.hu"
+                      href="mailto:m.kriszta1@gmail.com"
                       className="text-rose-700 hover:text-rose-800 break-all"
                     >
-                      info@molnarkrisztina.hu
+                      m.kriszta1@gmail.com
                     </a>
                   </div>
                 </div>

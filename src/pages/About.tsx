@@ -1,3 +1,5 @@
+import me from "../assets/about/me.jpg";
+
 function About() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-50 py-32">
@@ -18,7 +20,7 @@ function About() {
         <div className="grid md:grid-cols-2 gap-10 items-start mb-16">
           <div className="rounded-2xl overflow-hidden shadow-md bg-white">
             <img
-              src="https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=800"
+              src={me}
               alt="Molnár Kriszta kozmetikai munka közben"
               className="w-full h-80 object-cover"
             />

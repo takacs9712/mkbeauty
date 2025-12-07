@@ -1,19 +1,17 @@
-import { useState } from "react";
-
-import img1 from "../assets/facebook/1.jpg";
-import img2 from "../assets/facebook/2.jpg";
-import img3 from "../assets/facebook/3.jpg";
-import img4 from "../assets/facebook/4.jpg";
-import img5 from "../assets/facebook/5.jpg";
-import img6 from "../assets/facebook/6.jpg";
-import img7 from "../assets/facebook/7.jpg";
-import img8 from "../assets/facebook/8.jpg";
-import img9 from "../assets/facebook/9.jpg";
-
-const ALL_IMAGES = [img1, img2, img3, img4, img5, img6, img7, img8, img9];
-const IMAGES_PER_PAGE = 6;
+// Gallery.tsx - Szebb verzió
+import { useState, useMemo, useCallback } from "react";
+import Pagination from "../components/Pagination";
 
 const Gallery = () => {
+  const ALL_IMAGES = useMemo(() => {
+    const modules = import.meta.glob<{ default: string }>(
+      "../assets/facebook/*.jpg",
+      { eager: true }
+    );
+    return Object.values(modules).map((module) => module.default as string);
+  }, []);
+
+  const IMAGES_PER_PAGE = 6;
   const [currentPage, setCurrentPage] = useState(1);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
@@ -24,43 +22,54 @@ const Gallery = () => {
     startIndex + IMAGES_PER_PAGE
   );
 
-  const goToPage = (page: number) => {
-    if (page < 1 || page > pageCount) return;
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const goToPage = useCallback(
+    (page: number) => {
+      if (page < 1 || page > pageCount) return;
+      setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
+    [pageCount]
+  );
 
-  const openLightbox = (globalIndex: number) => {
+  const openLightbox = useCallback((globalIndex: number) => {
     setLightboxIndex(globalIndex);
-  };
+  }, []);
 
-  const closeLightbox = () => setLightboxIndex(null);
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null);
+  }, []);
 
-  const showPrev = () => {
+  const showPrev = useCallback(() => {
     if (lightboxIndex === null) return;
     setLightboxIndex(
       (lightboxIndex - 1 + ALL_IMAGES.length) % ALL_IMAGES.length
     );
-  };
+  }, [lightboxIndex, ALL_IMAGES.length]);
 
-  const showNext = () => {
+  const showNext = useCallback(() => {
     if (lightboxIndex === null) return;
     setLightboxIndex((lightboxIndex + 1) % ALL_IMAGES.length);
-  };
+  }, [lightboxIndex, ALL_IMAGES.length]);
 
   return (
-    <section className="min-h-screen py-32 bg-gradient-to-br from-rose-50 via-pink-50/50 to-rose-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Fejléc */}
-        <div className="text-center mb-10">
-          <h1 className="page-title">Munkáim</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Válogatás az elkészült sminktetoválásokból és kozmetikai munkákból.
+    <section className="min-h-screen py-20 sm:py-28 lg:py-36 bg-gradient-to-br from-rose-50 via-pink-50/30 to-rose-100/50 relative overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-rose-200/20 rounded-full blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-pink-200/20 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16 space-y-4">
+          <div className="inline-block">
+            <h1 className="page-title">Munkáim</h1>
+          </div>
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+            Válogatás az elkészült sminktetoválásokból és kozmetikai munkákból
           </p>
         </div>
 
-        {/* Képkártyák – szellősebb, egységes rács */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        {/* Gallery Grid - Képgaléria */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
           {currentImages.map((src, index) => {
             const globalIndex = startIndex + index;
             return (
@@ -68,9 +77,9 @@ const Gallery = () => {
                 key={globalIndex}
                 type="button"
                 onClick={() => openLightbox(globalIndex)}
-                className="group relative overflow-hidden rounded-2xl bg-white/70 backdrop-blur-sm shadow-md hover:shadow-2xl transition-all duration-500"
+                className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
               >
-                <div className="aspect-[5/5] w-full overflow-hidden">
+                <div className="aspect-square w-full overflow-hidden">
                   <img
                     src={src}
                     alt={`Galéria kép ${globalIndex + 1}`}
@@ -79,92 +88,68 @@ const Gallery = () => {
                   />
                 </div>
 
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-sm font-medium text-white">
-                    Galéria kép {globalIndex + 1}
-                  </span>
-                  <span className="text-xs px-2 py-1 rounded-full bg-white/80 text-rose-700 font-semibold">
-                    Megnyitás
-                  </span>
-                </div>
+                {/* Overlay - Hover hatás */}
+                {/* <div className="absolute inset-0 bg-gradient-to-t from-rose-900/70 via-rose-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> */}
+                {/* <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
               </button>
             );
           })}
         </div>
 
-        {/* Paginátor */}
-        <div className="flex items-center justify-center gap-2">
-          <button
-            onClick={() => goToPage(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="px-3 py-2 text-sm rounded-lg border border-rose-200 bg-white text-rose-700 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-rose-50 transition"
-          >
-            Előző
-          </button>
-
-          {Array.from({ length: pageCount }, (_, i) => i + 1).map((page) => (
-            <button
-              key={page}
-              onClick={() => goToPage(page)}
-              className={`w-9 h-9 text-sm rounded-lg border transition ${
-                page === currentPage
-                  ? "bg-rose-600 text-white border-rose-600"
-                  : "bg-white text-rose-700 border-rose-200 hover:bg-rose-50"
-              }`}
-            >
-              {page}
-            </button>
-          ))}
-
-          <button
-            onClick={() => goToPage(currentPage + 1)}
-            disabled={currentPage === pageCount}
-            className="px-3 py-2 text-sm rounded-lg border border-rose-200 bg-white text-rose-700 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-rose-50 transition"
-          >
-            Következő
-          </button>
-        </div>
+        {/* Pagination - külön komponens */}
+        <Pagination
+          currentPage={currentPage}
+          pageCount={pageCount}
+          onPageChange={goToPage}
+        />
       </div>
 
-      {/* Lightbox / modál */}
+      {/* Lightbox - Nagyított nézet */}
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center px-4"
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center px-4 animate-in fade-in duration-300"
           onClick={closeLightbox}
         >
           <div
-            className="relative max-w-4xl w-full"
+            className="relative max-w-5xl w-full animate-in zoom-in-95 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={ALL_IMAGES[lightboxIndex]}
               alt={`Nagyított kép ${lightboxIndex + 1}`}
-              className="w-full max-h-[70vh] object-contain rounded-xl shadow-2xl bg-black"
+              className="w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl"
             />
 
-            {/* Navigációs gombok */}
+            {/* Navigation - Navigáció */}
             <button
               onClick={showPrev}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-rose-700 rounded-full w-10 h-10 flex items-center justify-center shadow-lg"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white hover:bg-rose-50 text-rose-700 rounded-full w-14 h-14 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-110"
+              aria-label="Előző kép"
             >
-              ‹
+              <span className="text-3xl font-bold">‹</span>
             </button>
             <button
               onClick={showNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-rose-700 rounded-full w-10 h-10 flex items-center justify-center shadow-lg"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white hover:bg-rose-50 text-rose-700 rounded-full w-14 h-14 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-110"
+              aria-label="Következő kép"
             >
-              ›
+              <span className="text-3xl font-bold">›</span>
             </button>
 
-            {/* Bezárás */}
             <button
               onClick={closeLightbox}
-              className="absolute top-3 right-3 bg-white/80 hover:bg-white text-gray-700 rounded-full w-9 h-9 flex items-center justify-center shadow-lg"
+              className="absolute -top-4 -right-4 bg-white hover:bg-rose-50 text-gray-800 rounded-full w-12 h-12 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-110 "
+              aria-label="Bezárás"
             >
-              ✕
+              <span className="text-2xl font-bold">✕</span>
             </button>
+
+            {/* Image counter - Számláló */}
+            <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
+              <span className="text-sm font-semibold text-gray-700">
+                {lightboxIndex + 1} / {ALL_IMAGES.length}
+              </span>
+            </div>
           </div>
         </div>
       )}

@@ -2,14 +2,13 @@ import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
-
+import Home from "./pages/Home";
 import { inject } from "@vercel/analytics";
 import { injectSpeedInsights } from "@vercel/speed-insights";
 
 injectSpeedInsights();
 inject();
 
-const Home = React.lazy(() => import("./pages/Home"));
 const About = React.lazy(() => import("./pages/About"));
 const Prices = React.lazy(() => import("./pages/Prices"));
 const Booking = React.lazy(() => import("./pages/Booking"));
@@ -30,10 +29,10 @@ function App() {
       <div className="">
         <Routes>
           <Route path="/" element={<Home onNavigate={handleNavigate} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/prices" element={<Prices />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/booking" element={<Booking />} />
+          <Route path="/rolam" element={<About />} />
+          <Route path="/arak" element={<Prices />} />
+          <Route path="/munkaim" element={<Portfolio />} />
+          <Route path="/idopontfoglalas" element={<Booking />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
