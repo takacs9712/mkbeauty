@@ -241,25 +241,6 @@ function Prices() {
             ))}
           </div>
         </section>
-
-        {/* CTA banner */}
-        <div className="mt-16 text-center">
-          <div className="inline-block bg-gradient-to-r from-rose-500 to-pink-500 rounded-2xl p-[2px]">
-            <div className="bg-white rounded-2xl px-8 py-6">
-              <p className="text-gray-700 text-sm sm:text-base mb-3">
-                Az árak tájékoztató jellegűek, pontos árat személyes konzultáció
-                során adok.
-              </p>
-              <a
-                href="tel:+36301234567"
-                className="inline-flex items-center gap-2 text-rose-600 font-semibold hover:text-rose-700 transition-colors"
-              >
-                <span>Időpontfoglalás</span>
-                <span>→</span>
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
