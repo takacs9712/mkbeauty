@@ -2,7 +2,7 @@ import { Phone, Clock, Calendar, MessageSquare } from "lucide-react";
 
 function Booking() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-50 py-24">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-50 py-32">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Fejléc */}
         <div className="text-center mb-12">
