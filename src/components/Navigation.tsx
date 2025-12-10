@@ -19,11 +19,7 @@ export function Navigation({ onNavigate }: NavigationProps) {
     { id: "home", label: "Főoldal", icon: <Home className="w-4 h-4" /> },
     { id: "rolam", label: "Rólam", icon: <User className="w-4 h-4" /> },
     { id: "arak", label: "Árak", icon: <Tag className="w-4 h-4" /> },
-    {
-      id: "munkaim",
-      label: "Munkáim",
-      icon: <Image className="w-4 h-4" />,
-    },
+    { id: "munkaim", label: "Munkáim", icon: <Image className="w-4 h-4" /> },
     {
       id: "idopontfoglalas",
       label: "Időpontfoglalás",
@@ -37,39 +33,29 @@ export function Navigation({ onNavigate }: NavigationProps) {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-        <nav
-          className="bg-white/80 backdrop-blur-md border border-rose-100
-                     shadow-lg rounded-full px-4 sm:px-6 py-2
-                     flex items-center justify-between"
-        >
-          {/* Logo + név */}
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14">
           <button
             onClick={() => handleClick("home")}
-            className="flex items-center gap-2 sm:gap-3"
-            aria-label="Főoldal"
+            className="flex items-center gap-3 p-2 -m-2  transition-colors"
           >
             <img
               src={icon}
-              alt="Molnár Krisztina logó"
-              className="w-8 h-8 rounded-full object-cover shadow-sm"
+              alt="Molnár Krisztina"
+              className="w-9 h-9 rounded-lg object-cover"
             />
-            <span className=" sm:block text-base sm:text-lg font-serif text-rose-900 tracking-[0.08em] uppercase">
+            <span className="hidden sm:inline font-serif text-lg font-medium text-gray-900">
               Molnár Krisztina
             </span>
           </button>
 
-          {/* Desktop menü */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-6">
+          <div className="hidden md:flex items-center gap-6">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleClick(item.id)}
-                className="inline-flex items-center gap-2 text-sm font-medium
-                           text-gray-700 hover:text-rose-700
-                           transition-colors px-2 py-1 rounded-full
-                           hover:bg-rose-50"
+                className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-all duration-200"
               >
                 {item.icon}
                 <span>{item.label}</span>
@@ -77,33 +63,26 @@ export function Navigation({ onNavigate }: NavigationProps) {
             ))}
           </div>
 
-          {/* Mobil hamburger */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-700 p-1 rounded-full hover:bg-rose-50 transition"
+            className="md:hidden p-2 -m-2 rounded-lg hover:bg-gray-100 transition-colors"
           >
-            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
-        </nav>
+        </div>
       </div>
 
-      {/* Mobil lenyíló menü */}
       {isMenuOpen && (
-        <div className="md:hidden mt-2 px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="bg-white/95 backdrop-blur-md border border-rose-100 rounded-2xl shadow-lg py-3">
+        <div className="md:hidden bg-white border-t border-gray-200 shadow-sm">
+          <div className="max-w-6xl mx-auto px-4 py-4">
+            <div className="space-y-2">
               {menuItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => handleClick(item.id)}
-                  className="flex items-center gap-3 w-full text-left px-4 py-2.5
-                             text-base font-medium text-gray-700
-                             hover:bg-rose-50 transition-colors"
+                  className="flex items-center gap-3 w-full text-left px-4 py-3 text-base font-medium text-gray-700 hover:bg-gray-50 rounded-xl transition-colors"
                 >
-                  <span className="w-8 h-8 flex items-center justify-center rounded-full bg-rose-50 text-rose-600">
-                    {item.icon}
-                  </span>
-
+                  {item.icon}
                   <span>{item.label}</span>
                 </button>
               ))}

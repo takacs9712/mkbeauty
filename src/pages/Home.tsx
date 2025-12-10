@@ -16,9 +16,9 @@ function Home({ onNavigate }: HomeProps) {
     <div className="min-h-screen">
       <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-rose-50 to-pink-50 pt-16">
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/3997379/pexels-photo-3997379.jpeg?auto=compress&cs=tinysrgb&w=1600')] bg-cover bg-center opacity-10"></div>
-        <div className="relative text-center px-4 max-w-4xl mx-auto">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-serif text-rose-900 mb-6">
-            Molnár Kriszta Kozmetika
+        <div className="relative text-center px-4 max-w-6xl mx-auto">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif text-rose-900 mb-6">
+            Molnár Krisztina Kozmetika
           </h1>
           <p className="text-2xl sm:text-3xl text-rose-700 mb-2">
             Sminktetoválás · Kozmetika
