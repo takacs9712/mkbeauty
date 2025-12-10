@@ -164,9 +164,7 @@ function Home({ onNavigate }: HomeProps) {
             Készen áll a változásra?
           </h2>
           <p className="text-base sm:text-lg text-gray-700 max-w-2xl mx-auto">
-            Foglaljon időpontot most, és tapasztalja meg, milyen, amikor a
-            professzionális sminktetoválás és kozmetika az Ön magabiztosságáért
-            dolgozik.
+            Foglaljon időpontot most, és bízza magát profi kezekre!
           </p>
 
           <a
