@@ -26,7 +26,7 @@ function Home({ onNavigate }: HomeProps) {
           <p className="text-lg sm:text-xl text-rose-600 mb-4">Tiszaújváros</p>
           <p className="text-lg sm:text-xl text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
             Emelje ki természetes szépségét professzionális sminktetoválással és
-            prémium kozmetikai kezelésekkel Tiszaújváros szívében. Több mint 8
+            prémium kozmetikai kezelésekkel Tiszaújváros szívében. Több mint 12
             év tapasztalat, folyamatos szakmai fejlődés és elégedett vendégek
             százai.
           </p>
