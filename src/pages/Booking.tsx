@@ -2,27 +2,17 @@ import { Phone, Clock, Calendar, MessageSquare } from "lucide-react";
 
 function Booking() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-50 py-32">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-50 py-12 flex flex-col justify-center">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Fejléc */}
-        <div className="text-center mb-12">
-          <h1 className="page-title">Időpontfoglalás</h1>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            Időpontot kizárólag telefonon lehet foglalni, hogy minden kezelés
-            előtt személyre szabottan egyeztethessük az igényeit és a
-            lehetőségeket.
-          </p>
-        </div>
 
         {/* Fő kártya – telefonos foglalás */}
-        <div className="bg-white rounded-2xl shadow-xl p-8 sm:p-10 text-center space-y-6">
+        <div className="text-center">
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-rose-100 mb-4">
             <Phone className="w-10 h-10 text-rose-600" />
           </div>
 
-          <h2 className="text-2xl sm:text-3xl font-serif text-rose-900 mb-2">
-            Foglaljon időpontot telefonon
-          </h2>
+          <h2 className="page-title mb-4">Foglaljon időpontot telefonon</h2>
 
           <p className="text-gray-700">
             Hívjon bizalommal, és együtt megtaláljuk az Önnek legmegfelelőbb
