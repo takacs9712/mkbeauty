@@ -1,3 +1,12 @@
 User-agent: *
 Allow: /
 Sitemap: https://www.mkbeauty.hu/sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: Bingbot
+Allow: /
