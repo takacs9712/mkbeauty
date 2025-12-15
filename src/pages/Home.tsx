@@ -126,7 +126,7 @@ function Home({ onNavigate }: HomeProps) {
                 ))}
               </div>
               <button
-                onClick={() => onNavigate("prices")}
+                onClick={() => onNavigate("arak")}
                 className="mt-8 px-8 py-3 bg-rose-600 text-white rounded-lg hover:bg-rose-700 transition-all shadow-lg font-semibold"
               >
                 Árak megtekintése
