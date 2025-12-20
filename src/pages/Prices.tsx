@@ -1,3 +1,5 @@
+import { Sparkles, Eye, Heart } from "lucide-react";
+
 type PriceItem = {
   name: string;
   price: string;
@@ -100,147 +102,172 @@ const priceData = {
 
 function Prices() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-purple-50 py-24 sm:py-32">
+    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-50 py-20 sm:py-28 lg:py-36">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Fejléc - optimalizált */}
-        <div className="text-center mb-12 sm:mb-16">
+        {/* Header */}
+        <div className="text-center mb-12">
           <h1 className="page-title">Szolgáltatások & Árak</h1>
-
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            **Az árak 2025. november 15-től visszavonásig érvényesek, bőrtípus-
-            és kezelésfüggők. Minden vendég számára személyre szabott kezelési
-            terv készül.**
+          <p className="body-large max-w-2xl mx-auto">
+            Az árak 2025. november 15-től visszavonásig érvényesek, bőrtípus- és
+            kezelésfüggők. Minden vendég számára személyre szabott kezelési terv
+            készül.
           </p>
         </div>
 
-        {/* Kozmetikai kezelések */}
-        <section className="mb-20">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-2 h-8 bg-gradient-to-b from-rose-500 to-pink-500 rounded-full"></div>
-            <h2 className="text-xl sm:text-3xl font-bold  text-rose-900">
-              Kozmetikai kezelések
-            </h2>
+        {/* Cosmetic Services */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-10 w-10 rounded-full bg-rose-100 flex items-center justify-center">
+              <Heart className="w-5 h-5 text-rose-600" />
+            </div>
+            <h2 className="section-title mb-0">Kozmetikai kezelések</h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {priceData.kozmetika.map((section) => (
               <div
                 key={section.title}
-                className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-rose-100 hover:border-rose-200"
+                className="bg-white rounded-xl shadow-sm border border-rose-100 overflow-hidden hover:shadow-md transition-shadow"
               >
-                <h3 className="text-lg font-semibold text-rose-900 mb-4 pb-3 border-b-2 border-rose-100 group-hover:border-rose-300 transition-colors">
-                  {section.title}
-                </h3>
-                <div className="space-y-3">
-                  {section.items.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="flex justify-between gap-3 items-start"
-                    >
-                      <span className="text-gray-700 text-sm leading-relaxed flex-1">
-                        {item.name}
-                      </span>
-                      <span className="text-rose-600 font-bold text-sm whitespace-nowrap">
-                        {item.price}
-                      </span>
-                    </div>
-                  ))}
+                <div className="bg-rose-50 px-4 py-3 border-b border-rose-100">
+                  <h3 className="card-title mb-0 text-rose-900">
+                    {section.title}
+                  </h3>
                 </div>
-                {section.note && (
-                  <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-100 italic">
-                    {section.note}
-                  </p>
-                )}
+                <div className="p-4">
+                  <ul className="space-y-2">
+                    {section.items.map((item, idx) => (
+                      <li
+                        key={idx}
+                        className="flex justify-between items-center py-2 px-3 rounded-lg hover:bg-rose-50 transition-colors"
+                      >
+                        <span className="body-small text-gray-700 flex-1 pr-3">
+                          {item.name}
+                        </span>
+                        <span className="text-sm font-bold text-rose-600 whitespace-nowrap">
+                          {item.price}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  {section.note && (
+                    <p className="caption mt-3 pt-3 border-t border-gray-100 text-gray-500 italic">
+                      {section.note}
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Szempilla és szemöldök */}
-        <section className="mb-20">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-2 h-8 bg-gradient-to-b from-pink-500 to-purple-500 rounded-full"></div>
-            <h2 className="text-xl sm:text-3xl font-bold  text-rose-900">
-              Szempilla & Szemöldök
-            </h2>
+        {/* Eyelash & Eyebrow */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-10 w-10 rounded-full bg-pink-100 flex items-center justify-center">
+              <Eye className="w-5 h-5 text-pink-600" />
+            </div>
+            <h2 className="section-title mb-0">Szempilla & Szemöldök</h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl">
+          <div className="grid sm:grid-cols-2 gap-4 max-w-4xl">
             {priceData.szempilla.map((section) => (
               <div
                 key={section.title}
-                className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-pink-100 hover:border-pink-200"
+                className="bg-white rounded-xl shadow-sm border border-pink-100 overflow-hidden hover:shadow-md transition-shadow"
               >
-                <h3 className="text-lg font-semibold text-rose-900 mb-4 pb-3 border-b-2 border-pink-100 group-hover:border-pink-300 transition-colors">
-                  {section.title}
-                </h3>
-                <div className="space-y-3">
-                  {section.items.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="flex justify-between gap-3 items-start"
-                    >
-                      <span className="text-gray-700 text-sm leading-relaxed flex-1">
-                        {item.name}
-                      </span>
-                      <span className="text-pink-600 font-bold text-sm whitespace-nowrap">
-                        {item.price}
-                      </span>
-                    </div>
-                  ))}
+                <div className="bg-pink-50 px-4 py-3 border-b border-pink-100">
+                  <h3 className="card-title mb-0 text-pink-900">
+                    {section.title}
+                  </h3>
                 </div>
-                {section.note && (
-                  <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-100 italic">
-                    {section.note}
-                  </p>
-                )}
+                <div className="p-4">
+                  <ul className="space-y-2">
+                    {section.items.map((item, idx) => (
+                      <li
+                        key={idx}
+                        className="flex justify-between items-center py-2 px-3 rounded-lg hover:bg-pink-50 transition-colors"
+                      >
+                        <span className="body-small text-gray-700 flex-1 pr-3">
+                          {item.name}
+                        </span>
+                        <span className="text-sm font-bold text-pink-600 whitespace-nowrap">
+                          {item.price}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  {section.note && (
+                    <p className="caption mt-3 pt-3 border-t border-gray-100 text-gray-500 italic">
+                      {section.note}
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </div>
         </section>
 
-        {/* Sminktetoválás */}
+        {/* Permanent Makeup */}
         <section className="mb-12">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-2 h-8 bg-gradient-to-b from-purple-500 to-rose-500 rounded-full"></div>
-            <h2 className="text-xl sm:text-3xl font-bold  text-rose-900">
-              Sminktetoválás
-            </h2>
+          <div className="flex items-center gap-3 mb-6">
+            <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-purple-600" />
+            </div>
+            <h2 className="section-title mb-0">Sminktetoválás</h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-4xl">
+          <div className="grid sm:grid-cols-2 gap-4 max-w-4xl">
             {priceData.sminkteteovalas.map((section) => (
               <div
                 key={section.title}
-                className="group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-purple-100 hover:border-purple-200"
+                className="bg-white rounded-xl shadow-sm border border-purple-100 overflow-hidden hover:shadow-md transition-shadow"
               >
-                <h3 className="text-lg font-semibold text-rose-900 mb-4 pb-3 border-b-2 border-purple-100 group-hover:border-purple-300 transition-colors">
-                  {section.title}
-                </h3>
-                <div className="space-y-3">
-                  {section.items.map((item, idx) => (
-                    <div
-                      key={idx}
-                      className="flex justify-between gap-3 items-start"
-                    >
-                      <span className="text-gray-700 text-sm leading-relaxed flex-1">
-                        {item.name}
-                      </span>
-                      <span className="text-purple-600 font-bold text-sm whitespace-nowrap">
-                        {item.price}
-                      </span>
-                    </div>
-                  ))}
+                <div className="bg-purple-50 px-4 py-3 border-b border-purple-100">
+                  <h3 className="card-title mb-0 text-purple-900">
+                    {section.title}
+                  </h3>
                 </div>
-                {section.note && (
-                  <p className="text-xs text-gray-500 mt-4 pt-3 border-t border-gray-100 italic">
-                    {section.note}
-                  </p>
-                )}
+                <div className="p-4">
+                  <ul className="space-y-2">
+                    {section.items.map((item, idx) => (
+                      <li
+                        key={idx}
+                        className="flex justify-between items-center py-2 px-3 rounded-lg hover:bg-purple-50 transition-colors"
+                      >
+                        <span className="body-small text-gray-700 flex-1 pr-3">
+                          {item.name}
+                        </span>
+                        <span className="text-sm font-bold text-purple-600 whitespace-nowrap">
+                          {item.price}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  {section.note && (
+                    <p className="caption mt-3 pt-3 border-t border-gray-100 text-gray-500 italic">
+                      {section.note}
+                    </p>
+                  )}
+                </div>
               </div>
             ))}
           </div>
         </section>
+
+        {/* Footer Note */}
+        <div className="mt-12 text-center bg-white rounded-xl shadow-sm p-6">
+          <p className="body-text text-gray-700">
+            📞 Kérdés esetén hívjon bizalommal a{" "}
+            <a
+              href="tel:+36304431505"
+              className="text-rose-600 font-semibold hover:text-rose-700 transition-colors"
+            >
+              +36 30 443 1505
+            </a>{" "}
+            telefonszámon
+          </p>
+        </div>
       </div>
     </div>
   );

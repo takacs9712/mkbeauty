@@ -1,8 +1,7 @@
-// Gallery.tsx - Szebb verzió
 import { useState, useMemo, useCallback } from "react";
 import Pagination from "../components/Pagination";
 
-const Gallery = () => {
+const Portfolio = () => {
   const ALL_IMAGES = useMemo(() => {
     const modules = import.meta.glob<{ default: string }>(
       "../assets/facebook/*.jpg",
@@ -53,23 +52,23 @@ const Gallery = () => {
 
   return (
     <section className="min-h-screen py-20 sm:py-28 lg:py-36 bg-gradient-to-br from-rose-50 via-pink-50/30 to-rose-100/50 relative overflow-hidden">
+      {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-rose-200/20 rounded-full blur-3xl" />
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-pink-200/20 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <div className="inline-block">
-            <h1 className="page-title">Munkáim</h1>
-          </div>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+          <h1 className="page-title">Munkáim</h1>
+          <p className="body-large max-w-2xl mx-auto">
             Válogatás az elkészült sminktetoválásokból és kozmetikai munkákból
           </p>
         </div>
 
-        {/* Gallery Grid - Képgaléria */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {currentImages.map((src, index) => {
             const globalIndex = startIndex + index;
             return (
@@ -78,6 +77,7 @@ const Gallery = () => {
                 type="button"
                 onClick={() => openLightbox(globalIndex)}
                 className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+                aria-label={`Galéria kép ${globalIndex + 1} megnyitása`}
               >
                 <div className="aspect-square w-full overflow-hidden">
                   <img
@@ -88,15 +88,14 @@ const Gallery = () => {
                   />
                 </div>
 
-                {/* Overlay - Hover hatás */}
-                {/* <div className="absolute inset-0 bg-gradient-to-t from-rose-900/70 via-rose-600/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" /> */}
-                {/* <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div> */}
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-rose-900/60 via-rose-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </button>
             );
           })}
         </div>
 
-        {/* Pagination - külön komponens */}
+        {/* Pagination */}
         <Pagination
           currentPage={currentPage}
           pageCount={pageCount}
@@ -104,11 +103,14 @@ const Gallery = () => {
         />
       </div>
 
-      {/* Lightbox - Nagyított nézet */}
+      {/* Lightbox */}
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center px-4 animate-in fade-in duration-300"
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center px-4 animate-in fade-in duration-300"
           onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Nagyított kép nézet"
         >
           <div
             className="relative max-w-5xl w-full animate-in zoom-in-95 duration-300"
@@ -120,33 +122,36 @@ const Gallery = () => {
               className="w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl"
             />
 
-            {/* Navigation - Navigáció */}
+            {/* Previous button */}
             <button
               onClick={showPrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white hover:bg-rose-50 text-rose-700 rounded-full w-14 h-14 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-110"
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-white hover:bg-rose-50 text-rose-700 rounded-full w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-110"
               aria-label="Előző kép"
             >
-              <span className="text-3xl font-bold">‹</span>
-            </button>
-            <button
-              onClick={showNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white hover:bg-rose-50 text-rose-700 rounded-full w-14 h-14 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-110"
-              aria-label="Következő kép"
-            >
-              <span className="text-3xl font-bold">›</span>
+              <span className="text-2xl sm:text-3xl font-bold">‹</span>
             </button>
 
+            {/* Next button */}
+            <button
+              onClick={showNext}
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-white hover:bg-rose-50 text-rose-700 rounded-full w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-110"
+              aria-label="Következő kép"
+            >
+              <span className="text-2xl sm:text-3xl font-bold">›</span>
+            </button>
+
+            {/* Close button */}
             <button
               onClick={closeLightbox}
-              className="absolute -top-4 -right-4 bg-white hover:bg-rose-50 text-gray-800 rounded-full w-12 h-12 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-110 "
+              className="absolute -top-4 -right-4 bg-white hover:bg-rose-50 text-gray-800 rounded-full w-12 h-12 flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-110"
               aria-label="Bezárás"
             >
               <span className="text-2xl font-bold">✕</span>
             </button>
 
-            {/* Image counter - Számláló */}
+            {/* Image counter */}
             <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-full shadow-lg">
-              <span className="text-sm font-semibold text-gray-700">
+              <span className="body-small font-semibold text-gray-700">
                 {lightboxIndex + 1} / {ALL_IMAGES.length}
               </span>
             </div>
@@ -157,4 +162,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default Portfolio;

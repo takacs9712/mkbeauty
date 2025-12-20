@@ -6,4 +6,43 @@
   .page-title {
     @apply text-4xl md:text-4xl font-serif text-rose-900 mb-4;
   }
+  .section-title {
+    @apply text-2xl sm:text-3xl font-bold text-rose-900 mb-8;
+  }
+
+  .subsection-title {
+    @apply text-xl font-semibold text-rose-900 mb-4;
+  }
+
+  .card-title {
+    @apply text-lg font-semibold text-rose-900 mb-2;
+  }
+
+  .body-large {
+    @apply text-lg text-gray-700 leading-relaxed;
+  }
+
+  .body-text {
+    @apply text-base text-gray-700 leading-relaxed;
+  }
+
+  .body-small {
+    @apply text-sm text-gray-700 leading-relaxed;
+  }
+
+  .caption {
+    @apply text-xs text-gray-500;
+  }
+
+  .price-text {
+    @apply text-sm font-bold text-rose-600;
+  }
+
+  .hero-title {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-serif text-rose-900;
+  }
+
+  .hero-subtitle {
+    @apply text-xl sm:text-2xl text-rose-700;
+  }
 }

@@ -6,7 +6,7 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Fejléc */}
         <div className="text-center mb-12">
-          <h1 className="page-title">Elérhetőség</h1>
+          <h1 className="section-title">Elérhetőség</h1>
           <p className="text-base sm:text-lg text-gray-700 max-w-xl mx-auto">
             Látogasson el hozzánk Tiszaújvárosban, és engedje meg, hogy
             kényeztessük.
