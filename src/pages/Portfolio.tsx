@@ -1,5 +1,6 @@
 import { useState, useMemo, useCallback } from "react";
 import Pagination from "../components/Pagination";
+import { motion } from "framer-motion";
 
 const Portfolio = () => {
   const ALL_IMAGES = useMemo(() => {
@@ -51,7 +52,7 @@ const Portfolio = () => {
   }, [lightboxIndex, ALL_IMAGES.length]);
 
   return (
-    <section className="min-h-screen py-20 sm:py-28 lg:py-36 bg-gradient-to-br from-rose-50 via-pink-50/30 to-rose-100/50 relative overflow-hidden">
+    <section className="min-h-screen pt-32 pb-20 sm:py-28 lg:py-36 bg-gradient-to-br from-rose-50 via-pink-50/30 to-rose-100/50 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-rose-200/20 rounded-full blur-3xl" />
@@ -68,12 +69,21 @@ const Portfolio = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
+        >
           {currentImages.map((src, index) => {
             const globalIndex = startIndex + index;
             return (
-              <button
+              <motion.button
                 key={globalIndex}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 type="button"
                 onClick={() => openLightbox(globalIndex)}
                 className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
@@ -90,10 +100,10 @@ const Portfolio = () => {
 
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-rose-900/60 via-rose-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </button>
+              </motion.button>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Pagination */}
         <Pagination

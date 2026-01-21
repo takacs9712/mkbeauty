@@ -1,4 +1,5 @@
 import { Sparkles, Eye, Heart } from "lucide-react";
+import { motion } from "framer-motion";
 
 type PriceItem = {
   name: string;
@@ -101,32 +102,59 @@ const priceData = {
 };
 
 function Prices() {
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 to-pink-50 py-20 sm:py-28 lg:py-36">
+    <div className="min-h-screen bg-cream pt-32 pb-20 sm:py-28 lg:py-36">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
           <h1 className="page-title">Szolgáltatások & Árak</h1>
           <p className="body-large max-w-2xl mx-auto">
             Az árak 2025. november 15-től visszavonásig érvényesek, bőrtípus- és
             kezelésfüggők. Minden vendég számára személyre szabott kezelési terv
             készül.
           </p>
-        </div>
+        </motion.div>
 
         {/* Cosmetic Services */}
-        <section className="mb-16">
-          <div className="flex items-center gap-3 mb-6">
+        <motion.section
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <motion.div variants={item} className="flex items-center gap-3 mb-6 justify-center sm:justify-start">
             <div className="h-10 w-10 rounded-full bg-rose-100 flex items-center justify-center">
               <Heart className="w-5 h-5 text-rose-600" />
             </div>
-            <h2 className="section-title mb-0">Kozmetikai kezelések</h2>
-          </div>
+            <h2 className="section-title mb-0 !text-left">Kozmetikai kezelések</h2>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {priceData.kozmetika.map((section) => (
-              <div
+              <motion.div
                 key={section.title}
+                variants={item}
                 className="bg-white rounded-xl shadow-sm border border-rose-100 overflow-hidden hover:shadow-md transition-shadow"
               >
                 <div className="bg-rose-50 px-4 py-3 border-b border-rose-100">
@@ -156,24 +184,31 @@ function Prices() {
                     </p>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* Eyelash & Eyebrow */}
-        <section className="mb-16">
-          <div className="flex items-center gap-3 mb-6">
+        <motion.section
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <motion.div variants={item} className="flex items-center gap-3 mb-6 justify-center sm:justify-start">
             <div className="h-10 w-10 rounded-full bg-pink-100 flex items-center justify-center">
               <Eye className="w-5 h-5 text-pink-600" />
             </div>
-            <h2 className="section-title mb-0">Szempilla & Szemöldök</h2>
-          </div>
+            <h2 className="section-title mb-0 !text-left">Szempilla & Szemöldök</h2>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 gap-4 max-w-4xl">
             {priceData.szempilla.map((section) => (
-              <div
+              <motion.div
                 key={section.title}
+                variants={item}
                 className="bg-white rounded-xl shadow-sm border border-pink-100 overflow-hidden hover:shadow-md transition-shadow"
               >
                 <div className="bg-pink-50 px-4 py-3 border-b border-pink-100">
@@ -203,24 +238,31 @@ function Prices() {
                     </p>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* Permanent Makeup */}
-        <section className="mb-12">
-          <div className="flex items-center gap-3 mb-6">
+        <motion.section
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <motion.div variants={item} className="flex items-center gap-3 mb-6 justify-center sm:justify-start">
             <div className="h-10 w-10 rounded-full bg-purple-100 flex items-center justify-center">
               <Sparkles className="w-5 h-5 text-purple-600" />
             </div>
-            <h2 className="section-title mb-0">Sminktetoválás</h2>
-          </div>
+            <h2 className="section-title mb-0 !text-left">Sminktetoválás</h2>
+          </motion.div>
 
           <div className="grid sm:grid-cols-2 gap-4 max-w-4xl">
             {priceData.sminkteteovalas.map((section) => (
-              <div
+              <motion.div
                 key={section.title}
+                variants={item}
                 className="bg-white rounded-xl shadow-sm border border-purple-100 overflow-hidden hover:shadow-md transition-shadow"
               >
                 <div className="bg-purple-50 px-4 py-3 border-b border-purple-100">
@@ -250,13 +292,18 @@ function Prices() {
                     </p>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </motion.section>
 
         {/* Footer Note */}
-        <div className="mt-12 text-center bg-white rounded-xl shadow-sm p-6">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center bg-white rounded-xl shadow-sm p-6 max-w-2xl mx-auto"
+        >
           <p className="body-text text-gray-700">
             📞 Kérdés esetén hívjon bizalommal a{" "}
             <a
@@ -267,7 +314,7 @@ function Prices() {
             </a>{" "}
             telefonszámon
           </p>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

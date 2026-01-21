@@ -1,8 +1,9 @@
 import React from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
 import Home from "./pages/Home";
+import ScrollToTop from "./components/ScrollToTop";
 import { inject } from "@vercel/analytics";
 import { injectSpeedInsights } from "@vercel/speed-insights";
 
@@ -16,19 +17,13 @@ const Portfolio = React.lazy(() => import("./pages/Portfolio"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 
 function App() {
-  const navigate = useNavigate();
-
-  const handleNavigate = (page: string) => {
-    navigate(page === "home" ? "/" : `/${page}`);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <div className="min-h-screen">
-      <Navigation onNavigate={handleNavigate} />
+      <ScrollToTop />
+      <Navigation />
       <div className="">
         <Routes>
-          <Route path="/" element={<Home onNavigate={handleNavigate} />} />
+          <Route path="/" element={<Home />} />
           <Route path="/rolam" element={<About />} />
           <Route path="/arak" element={<Prices />} />
           <Route path="/munkaim" element={<Portfolio />} />

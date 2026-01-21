@@ -2,7 +2,53 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+        serif: ["Lora", "serif"],
+      },
+      colors: {
+        rose: {
+          50: "#fff1f2",
+          100: "#ffe4e6",
+          200: "#fecdd3",
+          300: "#fda4af",
+          400: "#fb7185",
+          500: "#f43f5e",
+          600: "#e11d48", // Primary Brand Color
+          700: "#be123c",
+          800: "#9f1239", // Darker Text
+          900: "#881337",
+          950: "#4c0519",
+        },
+        gold: {
+          100: "#fbf8e8",
+          200: "#f5eea6",
+          300: "#efe57a",
+          400: "#e9dd55",
+          500: "#dcd22e",
+          600: "#d4af37", // Metallic Gold
+          700: "#b58e26",
+          800: "#8a6a1f",
+          900: "#70561b",
+        },
+        cream: "#fdfbf7",
+      },
+      animation: {
+        fadeIn: "fadeIn 0.3s ease-out forwards",
+        fadeInUp: "fadeInUp 0.5s ease-out forwards",
+      },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        fadeInUp: {
+          "0%": { opacity: "0", transform: "translateY(15px)" },
+          "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+      },
+    },
   },
   plugins: [],
 };

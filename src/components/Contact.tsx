@@ -62,9 +62,7 @@ const Contact = () => {
                 </div>
                 <div className="flex justify-between py-2 border-b border-rose-100">
                   <span className="text-gray-700">Szombat</span>
-                  <span className="font-semibold text-gray-900">
-                    9:00 – 18:00
-                  </span>
+                <span className="font-semibold text-rose-600">Zárva</span>
                 </div>
                 <div className="flex justify-between py-2">
                   <span className="text-gray-700">Vasárnap</span>
