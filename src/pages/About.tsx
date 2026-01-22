@@ -59,8 +59,10 @@ function About() {
             </p>
             <p className="body-text">
               2012 óta folyamatosan képzem magam a sminktetoválás területén,
-              hazai és nemzetközi szakemberektől tanulva. A szalonban dél-koreai
-              Thesera termékekkel dolgozom a professzionális bőrápolásért.
+              hazai és nemzetközi szakemberektől tanulva. A szalonban{" "}
+              <strong>Mesoestetic</strong> és dél-koreai{" "}
+              <strong>Thesera</strong> termékekkel dolgozom a professzionális
+              bőrápolásért.
             </p>
             <p className="body-text">
               Fontos számomra a nyugodt, barátságos légkör és az őszinte
@@ -75,22 +77,34 @@ function About() {
         </div>
 
         {/* Service Areas */}
-        <motion.div variants={container} className="grid md:grid-cols-3 gap-6 mb-16">
-          <motion.div variants={item} className="bg-white rounded-2xl shadow-sm p-6 card-hover">
+        <motion.div
+          variants={container}
+          className="grid md:grid-cols-3 gap-6 mb-16"
+        >
+          <motion.div
+            variants={item}
+            className="bg-white rounded-2xl shadow-sm p-6 card-hover"
+          >
             <h3 className="card-title">Sminktetoválás</h3>
             <p className="body-small">
               Ajak, szemöldök és szemhéj sminktetoválás, Soft Powder, szálas és
               hibrid technikákkal. Tetoválás eltávolítás lézerrel (GoInk).
             </p>
           </motion.div>
-          <motion.div variants={item} className="bg-white rounded-2xl shadow-sm p-6 card-hover">
+          <motion.div
+            variants={item}
+            className="bg-white rounded-2xl shadow-sm p-6 card-hover"
+          >
             <h3 className="card-title">Kozmetikai kezelések</h3>
             <p className="body-small">
               Arcmasszázs, carbon peeling, termikus és savas hámlasztó kezelések
               Thesera pen-nel. Dél-koreai bőrápolás a világ élvonalából.
             </p>
           </motion.div>
-          <motion.div variants={item} className="bg-white rounded-2xl shadow-sm p-6 card-hover">
+          <motion.div
+            variants={item}
+            className="bg-white rounded-2xl shadow-sm p-6 card-hover"
+          >
             <h3 className="card-title">Szempilla és szemöldök</h3>
             <p className="body-small">
               Szempilla építés, töltés, szemöldök festés és formázás, term.
