@@ -26,7 +26,6 @@ function About() {
         viewport={{ once: true }}
         className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        {/* Header */}
         <motion.div variants={item} className="text-center mb-12">
           <h1 className="page-title">Rólam</h1>
           <p className="body-large max-w-2xl mx-auto">
@@ -35,7 +34,6 @@ function About() {
           <p className="caption mt-2">Szent István út 4/A 2/2, Tiszaújváros</p>
         </motion.div>
 
-        {/* Main Introduction */}
         <div className="grid md:grid-cols-2 gap-10 items-start mb-16">
           <motion.div
             variants={item}
@@ -44,7 +42,7 @@ function About() {
             <img
               src={me}
               alt="Molnár Kriszta kozmetikai munka közben"
-              className="w-full h-80 object-cover hover:scale-105 transition-transform duration-700"
+              className="w-full h-auto object-cover hover:scale-105 transition-transform duration-700"
             />
           </motion.div>
           <motion.div variants={item} className="space-y-4">
@@ -76,7 +74,6 @@ function About() {
           </motion.div>
         </div>
 
-        {/* Service Areas */}
         <motion.div
           variants={container}
           className="grid md:grid-cols-3 gap-6 mb-16"
@@ -113,7 +110,6 @@ function About() {
           </motion.div>
         </motion.div>
 
-        {/* Professional Philosophy */}
         <motion.div
           variants={item}
           className="bg-white rounded-2xl shadow-sm p-8 space-y-4 mb-16 border-l-4 border-rose-400"
@@ -137,7 +133,6 @@ function About() {
           </p>
         </motion.div>
 
-        {/* Reviews & Why Choose */}
         <div className="grid md:grid-cols-2 gap-8">
           <motion.div
             variants={item}
